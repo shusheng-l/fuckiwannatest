@@ -1,0 +1,55 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+
+        <input type="hidden" name="id" value="{$id}" />
+
+        <div class="layui-form-item" style="display: none;">
+            <label class="layui-form-label required">修改订单颜色</label>
+            <div class="layui-input-block">
+                <input type="text" id="color" name="color" class="layui-input" lay-verify="required" lay-reqtext="填写订单颜色" placeholder="填写订单颜色" value="">
+                <tip>将RGB代码复制到框内</tip>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">订单标题</label>
+            <div class="layui-input-block">
+                <input type="text" id="idbt" name="idbt" class="layui-input" lay-verify="required" lay-reqtext="填写订单状态" placeholder="填写订单标题" value="">
+                <tip>可自行编辑订单标题。</tip>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">订单说明</label>
+            <div class="layui-input-block">
+                <input type="text" id="ixsm" name="ixsm" class="layui-input" lay-verify="required" lay-reqtext="填写订单说明" placeholder="填写订单说明" value="">
+                <tip>可自行编辑订单说明。</tip>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">备注</label>
+            <div class="layui-input-block">
+                <input type="text" id="ixbzmark" name="ixbzmark" class="layui-input" lay-verify="required" lay-reqtext="填写备注" placeholder="填写备注" value="">
+                <tip>可自行编辑订单备注。</tip>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">订单状态</label>
+            <div class="layui-input-block">
+                <select id="status" name="status" lay-filter="status">
+                    {volist name="orderStatuses" id="vo"}
+                    <option value="{$vo.id}" data-status-title="{$vo.status_title}" data-color="{$vo.color}" data-content="{$vo.content}" data-remark="{$vo.remark}">{$vo.title}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+        </div>
+
+    </form>
+</div>

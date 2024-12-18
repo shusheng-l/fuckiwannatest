@@ -1,0 +1,43 @@
+<form id="app-form" class="layui-form layuimini-form">
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">统一社会信用代码</label>
+        <div class="layui-input-block">
+            <input type="text" name="true_code" class="layui-input" lay-verify="required" placeholder="请输入统一社会信用代码" value="{:sysconfig('load','true_code')}" />
+        </div>
+    </div>
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">合同公章公司名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="company_namer" class="layui-input" lay-verify="required" placeholder="请输入合同公章公司名称" value="{:sysconfig('load','company_namer')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">合同公章</label>
+        <div class="layui-input-block layuimini-upload">
+            <input name="company_logor" class="layui-input layui-col-xs6" lay-verify="required" placeholder="请上传合同公章" value="{:sysconfig('load','company_logor')}">
+            <div class="layuimini-upload-btn">
+                <span><a class="layui-btn" data-upload="company_logor" data-upload-number="three" data-upload-exts="ico|png|jpg|jpeg"><i class="fa fa-upload"></i> 上传</a></span>
+                <span><a class="layui-btn layui-btn-normal" id="select_company_logor" data-upload-select="company_logor" data-upload-number="three"><i class="fa fa-list"></i> 选择</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">合同模板</label>
+        <div class="layui-input-block">
+            <textarea rows="100" style="height: 500px;" class="layui-textarea editor" name="contact_module">{:sysconfig('load','contact_module')}</textarea>
+            <tip>合同中可使用模板变量，变量使用时以“｛｝”包含即可自动生成
+            <br />
+                目前可使用变量：
+            <br />
+                借款人名称、借款人身份证号、借款人手机号、借款金额大写、借款金额小写、借款期限类型、 借款利息、借款开始日、借款结束日、借款人用户名、收款银行账号、收款银行开户行、逾期利息、借款人签名、合同签订日期、借款人住所
+            </tip>
+        </div>
+    </div>
+
+    <div class="hr-line"></div>
+    <div class="layui-form-item text-center">
+        <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="system.config/save" data-refresh="false">确认</button>
+        <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+    </div>
+
+</form>

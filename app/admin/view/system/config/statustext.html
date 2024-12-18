@@ -1,0 +1,83 @@
+<form id="app-form" class="layui-form layuimini-form">
+    <fieldset class="table-search-fieldset">
+        <legend>审核中预设文本</legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="dbt" class="layui-input" lay-verify="required" placeholder="请输入状态名称" value="{:sysconfig('load','dbt')}">
+                <tip>状态名称</tip>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态说明</label>
+            <div class="layui-input-block">
+                <input type="text" name="sm" class="layui-input" lay-verify="required" placeholder="请输入状态说明" value="{:sysconfig('load','sm')}">
+                <tip>状态说明</tip>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态备注</label>
+            <div class="layui-input-block">
+                <input type="text" name="bz" class="layui-input" lay-verify="required" placeholder="请输入状态备注" value="{:sysconfig('load','bz')}">
+                <tip>状态备注</tip>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <fieldset class="table-search-fieldset">
+        <legend>审核通过预设文本</legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="adopt_dbt" class="layui-input" lay-verify="required" placeholder="请输入状态名称" value="{:sysconfig('load','adopt_dbt')}">
+                <tip>状态名称</tip>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态说明</label>
+            <div class="layui-input-block">
+                <input type="text" name="adopt_sm" class="layui-input" lay-verify="required" placeholder="请输入状态说明" value="{:sysconfig('load','adopt_sm')}">
+                <tip>状态说明</tip>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态备注</label>
+            <div class="layui-input-block">
+                <input type="text" name="adopt_bz" class="layui-input" lay-verify="required" placeholder="请输入状态备注" value="{:sysconfig('load','adopt_bz')}">
+                <tip>状态备注</tip>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <fieldset class="table-search-fieldset">
+        <legend>已提现待下款预设文本</legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="qrtx_dbt" class="layui-input" lay-verify="required" placeholder="请输入状态名称" value="{:sysconfig('load','qrtx_dbt')}">
+                <tip>状态名称</tip>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态说明</label>
+            <div class="layui-input-block">
+                <input type="text" name="qrtx_sm" class="layui-input" lay-verify="required" placeholder="请输入状态说明" value="{:sysconfig('load','qrtx_sm')}">
+                <tip>状态说明</tip>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态备注</label>
+            <div class="layui-input-block">
+                <input type="text" name="qrtx_bz" class="layui-input" lay-verify="required" placeholder="请输入状态备注" value="{:sysconfig('load','qrtx_bz')}">
+                <tip>状态备注</tip>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="hr-line"></div>
+    <div class="layui-form-item text-center">
+        <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="system.config/save" data-refresh="false">确认</button>
+        <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+    </div>
+
+</form>

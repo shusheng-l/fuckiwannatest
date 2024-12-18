@@ -1,0 +1,41 @@
+<div class="layuimini-container">
+    <div class="layuimini-main" id="app">
+
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <!--<li>网站设置</li>-->
+                <li class="layui-this">APP配置及更新配置</li>
+                <li>借款配置</li>
+                <li>合同配置</li>
+                <li>预设文本</li>
+                <li>短信配置</li>
+                <li>客服配置</li>
+                <li>上传配置</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    {include file="system/config/logo" /}
+                </div>
+                <div class="layui-tab-item">
+                    {include file="system/config/load" /}
+                </div>
+                <div class="layui-tab-item">
+                    {include file="system/config/contact" /}
+                </div>
+                <div class="layui-tab-item">
+                    {include file="system/config/statustext" /}
+                </div>
+                <div class="layui-tab-item">
+                    {include file="system/config/sms" /}
+                </div>
+                <div class="layui-tab-item">
+                    {include file="system/config/server" /}
+                </div>
+                <div class="layui-tab-item">
+                    {include file="system/config/upload" /}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

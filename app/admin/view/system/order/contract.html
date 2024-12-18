@@ -1,0 +1,28 @@
+<div class="layuimini-container">
+    <style>
+        .title{
+            font-size: 24px;
+            text-align: center;
+            line-height: 48px;
+        }
+        .content{
+            width: 90%;
+            margin: 16px auto;
+        }
+        .nestable{
+            margin: 20px !important;
+            padding: 0px !important;
+        }
+        .user_info {
+            position: relative;
+        }
+    </style>
+    <form id="app-form" class="layui-form layuimini-form">
+        <div class="nestable">
+            <div class="title">借款订单：{$data.oid}合同</div>
+            <div class="public-selectArea public-selectArea1 margin_10 content">
+                {$tpl|raw}
+            </div>
+        </div>
+    </form>
+</div>

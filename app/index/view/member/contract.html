@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>合同</title>
+</head>
+<body>
+<div class="layuimini-container">
+    <style>
+        .title{
+            width: 100%;
+            font-size: 45px;
+            text-align: center;
+            line-height: 90px;
+        }
+        .content{
+            width: 90%;
+            margin: 16px auto;
+        }
+        .nestable{
+            margin: 20px !important;
+            padding: 0px !important;
+        }
+        form {
+            /*color: #fff !important;*/
+            font-size: 25px;
+        }
+        html,body {
+            background-color: #fff !important;
+        }
+        .user_info {
+            position: relative;
+            height: 200px;
+        }
+        .user_info img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <form id="app-form" class="layui-form layuimini-form">
+        <div class="nestable">
+            <div class="title">借款合同：{$data.oid}</div>
+            <div class="public-selectArea public-selectArea1 margin_10 content">
+                {$tpl|raw}
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

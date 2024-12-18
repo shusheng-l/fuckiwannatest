@@ -1,0 +1,44 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">模板名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入模板名称" value="{$row.title|default=''}">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属状态</label>
+            <div class="layui-input-block">
+                <select id="type" name="type" lay-filter="type">
+                    <option value="1" {if $row.type == 1}selected="selected"{/if}>审核中</option>
+                    <option value="2" {if $row.type == 2}selected="selected"{/if}>审核通过</option>
+                    <option value="3" {if $row.type == 3}selected="selected"{/if}>提现成功</option>
+                    <option value="4" {if $row.type == 4}selected="selected"{/if}>失败状态</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">模板内容</label>
+            <div class="layui-input-block">
+                <textarea name="content" class="layui-textarea" placeholder="请输入模板内容">{$row.content|default=''}</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">模板排序</label>
+            <div class="layui-input-block">
+                <input type="number" name="sort" class="layui-input" placeholder="请输入模板排序" value="{$row.sort|default=0}">
+            </div>
+        </div>
+
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,45 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        <input type="hidden" name="id" value="{$infos.infoid}" />
+        <div class="layui-form-item">
+            <label class="layui-form-label required">金额/￥：</label>
+            <div class="layui-input-block">
+                <input type="text" id="quota" name="quota" lay-verify="required" class="layui-input" value="{$infos.money}">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">期限/月：</label>
+            <div class="layui-input-block">
+                <input type="text" id="month" name="month" lay-verify="required" class="layui-input" value="{$infos.time}">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">总利息/￥：</label>
+            <div class="layui-input-block">
+                <input type="text" readonly class="layui-input" lay-verify="required" value="{$infos.allLoanMoney}">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">月利率/%：</label>
+            <div class="layui-input-block">
+                <input type="text" readonly class="layui-input" lay-verify="required" value="{$infos.interest}">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">每期/￥：</label>
+            <div class="layui-input-block">
+                <input type="text" readonly class="layui-input" lay-verify="required" value="{$infos.quotama}">
+            </div>
+        </div>
+
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,113 @@
+<style>
+    .layui-form-label-sepc {
+        width: 200px;
+    }
+    .layui-input-block-sepc {
+        margin-left: 230px;
+    }
+</style>
+<div class="layuimini-container">
+    <blockquote class="layui-elem-quote layui-text">
+        {$username}-钱包明细
+    </blockquote>
+    <input name="uid" type="hidden" id="uid" value="{$uid}" />
+    <form id="app-form" class="layui-form layuimini-form wallet">
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label-sepc required">钱包余额：{$qbmoney}元</label>
+            <div class="layui-input-block layui-input-block-sepc">
+                <input type="number" id="amount" class="layui-input" lay-verify="required" lay-reqtext="填写充值额度" placeholder="填写充值额度" value="">
+                <tip><a id="toSure" href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-sm">确认</a></tip>
+            </div>
+        </div>
+    </form>
+    <blockquote class="layui-elem-quote layui-text">
+        充值记录
+    </blockquote>
+    <table class="layui-table">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+        {volist name="qblogczlist" id="vo"}
+        <tr>
+            <td>{$vo.add_time|date='Y-m-d H:i:s'}</td>
+            <td>￥{$vo.money}</td>
+            <td>{eq name="$vo.isadmin" value="1"}人工充值{else/}<a href="{$vo.pzimg}" target="_blank"><img src="{$vo.pzimg}" alt="点击查看大图" height="28px" /></a>{/eq}</td>
+            <td>
+                {if $vo.status == 0}
+                <a href="javascript:void(0);" data-id="{$vo.id}" data-type="1" data-status="1" class="layui-btn layui-btn-normal layui-btn-sm recharegeSure">待确定</a>
+                {elseif $vo.status == 1 /}
+                <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-sm">已通过</a>
+                {else /}
+                <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-sm">已驳回</a>
+                {/if}
+                <a href="javascript:void(0);" data-id="{$vo.id}" data-type="1"  class="layui-btn layui-btn-normal layui-btn-sm recharegeDelete">删除</a>
+            </td>
+        </tr>
+        </tbody>
+        {/volist}
+    </table>
+    <blockquote class="layui-elem-quote layui-text">
+        提现记录
+    </blockquote>
+    <table class="layui-table">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+        {volist name="qblogqxlist" id="vo"}
+        <tr>
+            <td>{$vo.add_time|date='Y-m-d H:i:s'}</td>
+            <td>￥{$vo.money}</td>
+            <td>
+                {if $vo.status == 0}
+                <a href="javascript:void(0);" data-id="{$vo.id}" data-type="2" data-status="1" class="layui-btn layui-btn-normal layui-btn-sm recharegeSure">待确定</a>
+                {elseif $vo.status == 1 /}
+                <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-sm">已通过</a>
+                {else /}
+                <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-sm">已驳回</a>
+                {/if}
+                <a href="javascript:void(0);" data-id="{$vo.id}" data-type="2"  class="layui-btn layui-btn-normal layui-btn-sm recharegeDelete">删除</a>
+            </td>
+        </tr>
+        </tbody>
+        {/volist}
+    </table>
+    <blockquote class="layui-elem-quote layui-text">
+        还款记录
+    </blockquote>
+    <table class="layui-table">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+        {volist name="hklist" id="vo"}
+        <tr>
+            <td>第{$vo.billnum}期</td>
+            <td>{$vo.repayment_time|date='Y-m-d H:i:s'}</td>
+            <td>￥{$vo.allmoney}</td>
+            <td>
+                {if $vo.status == 0}
+                <span>待还款</span>
+                {elseif $vo.status == 1 /}
+                <span>已逾期</span>
+                {elseif $vo.status == 2 /}
+                <span>已还清</span>
+                {elseif $vo.status == 3 /}
+                <span>逾期还清</span>
+                {elseif $vo.status == 4 /}
+                <span>账单失效</span>
+                {/if}
+            </td>
+        </tr>
+        </tbody>
+        {/volist}
+    </table>
+</div>

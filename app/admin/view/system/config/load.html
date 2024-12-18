@@ -1,0 +1,202 @@
+<form id="app-form" class="layui-form layuimini-form">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">家庭地址</label>
+        <div class="layui-input-block">
+            <input type="radio" name="is_show_address" value="1" title="需要" {if condition="sysconfig('load','is_show_address') eq 1"}checked=""{/if}>
+            <input type="radio" name="is_show_address" value="0" title="不需要" {if condition="sysconfig('load','is_show_address') eq 0"}checked=""{/if}>
+            <tip>家庭地址是否填写</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作情况</label>
+        <div class="layui-input-block">
+            <input type="radio" name="is_show_jop" value="1" title="需要" {if condition="sysconfig('load','is_show_jop') eq 1"}checked=""{/if}>
+            <input type="radio" name="is_show_jop" value="0" title="不需要" {if condition="sysconfig('load','is_show_jop') eq 0"}checked=""{/if}>
+            <tip>工作情况是否填写</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证正反面</label>
+        <div class="layui-input-block">
+            <input type="radio" name="is_show_card" value="1" title="需要" {if condition="sysconfig('load','is_show_card') eq 1"}checked=""{/if}>
+            <input type="radio" name="is_show_card" value="0" title="不需要" {if condition="sysconfig('load','is_show_card') eq 0"}checked=""{/if}>
+            <tip>身份证正反面是否上传</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">手持身份证</label>
+        <div class="layui-input-block">
+            <input type="radio" name="is_show_take_card" value="1" title="需要" {if condition="sysconfig('load','is_show_take_card') eq 1"}checked=""{/if}>
+            <input type="radio" name="is_show_take_card" value="0" title="不需要" {if condition="sysconfig('load','is_show_take_card') eq 0"}checked=""{/if}>
+            <tip>手持身份证是否上传</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">提现状态</label>
+        <div class="layui-input-block">
+            <input type="radio" name="withdraw_status" value="1" title="开启" {if condition="sysconfig('load','withdraw_status') eq 1"}checked=""{/if}>
+            <input type="radio" name="withdraw_status" value="0" title="关闭" {if condition="sysconfig('load','withdraw_status') eq 0"}checked=""{/if}>
+            <tip>关闭用户提现提示支付工本费</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">贷款用途</label>
+        <div class="layui-input-block">
+            <input type="text" name="load_purpose" class="layui-input" lay-verify="required" placeholder="请输入贷款用途" value="{:sysconfig('load','load_purpose')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">月收入</label>
+        <div class="layui-input-block">
+            <input type="text" name="monthly_income" class="layui-input" lay-verify="required" placeholder="月收入" value="{:sysconfig('load','monthly_income')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">家庭关系</label>
+        <div class="layui-input-block">
+            <input type="text" name="relation_ship" class="layui-input" lay-verify="required" placeholder="月收入" value="{:sysconfig('load','relation_ship')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">银行列表</label>
+        <div class="layui-input-block">
+            <textarea class="showContextLittle" name="bank_type">{:sysconfig('load','bank_type')}</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">月息</label>
+        <div class="layui-input-block">
+            <input type="text" name="month_rate" class="layui-input" lay-verify="required" placeholder="请输入月息" value="{:sysconfig('load','month_rate')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">逾期费率</label>
+        <div class="layui-input-block">
+            <input type="text" name="over_rate" class="layui-input" lay-verify="required" placeholder="请输入逾期费率" value="{:sysconfig('load','over_rate')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">期限范围</label>
+        <div class="layui-input-block">
+            <input type="text" name="time_frame" class="layui-input" lay-verify="required" placeholder="请输入期限范围" value="{:sysconfig('load','time_frame')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单次借款最低金额</label>
+        <div class="layui-input-block">
+            <input type="text" name="min_loan" class="layui-input" lay-verify="required" placeholder="请输入单次借款最低金额" value="{:sysconfig('load','min_loan')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单次借款最高金额</label>
+        <div class="layui-input-block">
+            <input type="text" name="max_loan" class="layui-input" lay-verify="required" placeholder="请输入单次借款最高金额" value="{:sysconfig('load','max_loan')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">默认显示金额金额</label>
+        <div class="layui-input-block">
+            <input type="text" name="default_loan" class="layui-input" lay-verify="required" placeholder="请输入默认显示金额金额" value="{:sysconfig('load','default_loan')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">借款金额选择跨度</label>
+        <div class="layui-input-block">
+            <input type="text" name="span_loan" class="layui-input" lay-verify="required" placeholder="请输入借款金额选择跨度" value="{:sysconfig('load','span_loan')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">工本费率%</label>
+        <div class="layui-input-block">
+            <input type="number" name="production_cost" class="layui-input" lay-verify="required" placeholder="请输入工本费率" value="{:sysconfig('load','production_cost')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">工本费内容</label>
+        <div class="layui-input-block">
+            <input type="text" name="cost_content" class="layui-input" lay-verify="required" placeholder="请输入工本费内容" value="{:sysconfig('load','cost_content')}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">订单进度描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="orderRemark" class="layui-input" lay-verify="required" placeholder="请输入订单进度描述" value="{:sysconfig('load','orderRemark')}" />
+        </div>
+    </div>
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">提现密码</label>
+        <div class="layui-input-block">
+            <input type="text" name="withdraw_pass" class="layui-input" lay-verify="required" placeholder="请输入提现密码" value="{:sysconfig('load','withdraw_pass')}" />
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">微信二维码</label>
+        <div class="layui-input-block layuimini-upload">
+            <input name="wxcodes" class="layui-input layui-col-xs6" lay-verify="required" placeholder="请上传微信二维码" value="{:sysconfig('load','wxcodes')}">
+            <div class="layuimini-upload-btn">
+                <span><a class="layui-btn" data-upload="wxcodes" data-upload-number="one" data-upload-exts="ico|png|jpg|jpeg"><i class="fa fa-upload"></i> 上传</a></span>
+                <span><a class="layui-btn layui-btn-normal" id="select_wxcodes" data-upload-select="wxcodes" data-upload-number="one"><i class="fa fa-list"></i> 选择</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">支付宝二维码</label>
+        <div class="layui-input-block layuimini-upload">
+            <input name="zfbcodes" class="layui-input layui-col-xs6" lay-verify="required" placeholder="请上传支付宝二维码" value="{:sysconfig('load','zfbcodes')}">
+            <div class="layuimini-upload-btn">
+                <span><a class="layui-btn" data-upload="zfbcodes" data-upload-number="one" data-upload-exts="ico|png|jpg|jpeg"><i class="fa fa-upload"></i> 上传</a></span>
+                <span><a class="layui-btn layui-btn-normal" id="select_zfbcodes" data-upload-select="zfbcodes" data-upload-number="one"><i class="fa fa-list"></i> 选择</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">充值银行</label>
+        <div class="layui-input-block">
+            <input type="text" name="paybank" class="layui-input" lay-verify="required" placeholder="请输入充值银行" value="{:sysconfig('load','paybank')}" />
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">充值户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="payname" class="layui-input" lay-verify="required" placeholder="请输入充值户名" value="{:sysconfig('load','payname')}" />
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">充值卡号</label>
+        <div class="layui-input-block">
+            <input type="text" name="paysn" class="layui-input" lay-verify="required" placeholder="请输入充值卡号" value="{:sysconfig('load','paysn')}" />
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">充值说明</label>
+        <div class="layui-input-block">
+            <input type="text" name="paysm" class="layui-input" lay-verify="required" placeholder="请输入充值说明" value="{:sysconfig('load','paysm')}" />
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">默认前台用户重置密码</label>
+        <div class="layui-input-block">
+            <input type="text" name="repay_pw" class="layui-input" lay-verify="required" placeholder="请输入默认前台用户重置密码" value="{:sysconfig('site','repay_pw')}" />
+        </div>
+    </div>
+
+    <div class="hr-line"></div>
+    <div class="layui-form-item text-center">
+        <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="system.config/save" data-refresh="false">确认</button>
+        <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+    </div>
+
+</form>

@@ -1,0 +1,197 @@
+<style>
+    .showBg {
+        background-color: #f2f2f2;
+    }
+</style>
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        <blockquote class="layui-elem-quote layui-text">
+            基本信息
+        </blockquote>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>身份信息</legend>
+        </fieldset>
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <?php $identity = $row['userInfo']['identity'];?>
+                <td class="showBg">真实姓名：</td>
+                <td><input type="text" name="username" class="layui-input" lay-verify="required" value="{$row['userInfo']['identity']['username']|default='未填写'}" /></td>
+                <td class="showBg">性别：</td>
+                <td>
+                    <?php
+                        if(!$identity['usercard']){
+                        echo "-";
+                        }else{
+                        if(strlen($identity['usercard']) == 15){
+                        $num = substr($identity['usercard'],-1,1);
+                        }else{
+                        $num = substr($identity['usercard'],-2,1);
+                        }
+                        if($num % 2==0)
+                        echo "女";
+                        else
+                        echo "男";
+                        }
+                    ?>
+                </td>
+                <td class="showBg">出生日期：</td>
+                <td>
+                    <?php
+                        if(!$identity['usercard']){
+                        echo "-";
+                        }else{
+                        if(strlen($identity['usercard']) == 15){
+                        $num = '19'.substr($identity['usercard'],6,6);
+                        }else{
+                        $num = substr($identity['usercard'],6,8);
+                        }
+                        $num = substr($num,0,4).'-'.substr($num,4,2).'-'.substr($num,-2,2);
+                        echo $num;
+                        }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="showBg">年龄：</td>
+                <td>
+                    <?php
+                        if(isset($num))
+                        echo countage($num);
+                        else
+                        echo "-";
+                    ?>
+                </td>
+                <td class="showBg">身份证号：</td>
+                <td><input type="text" name="usercard" class="layui-input" lay-verify="required" value="{$identity.usercard|default='未填写'}" /></td>
+                <td class="showBg">账户注册手机号：</td>
+                <td>{$row['telnum']}</td>
+            </tr>
+            <tr>
+                <td class="showBg">身份证正面照：</td>
+                <td>
+                {eq name="$identity.cardphoto_1" value=""}
+                未上传
+                {else/}
+                <a href="{$identity.cardphoto_1}" target="_blank">
+                    <img src="{$identity.cardphoto_1}" alt="点击查看大图" height="28px" />
+                </a>
+                {/eq}
+                </td>
+                <td class="showBg">身份证反面照：</td>
+                <td>
+                {eq name="$identity.cardphoto_2" value=""}
+                未上传
+                {else/}
+                <a href="{$identity.cardphoto_2}" target="_blank">
+                    <img src="{$identity.cardphoto_2}" alt="点击查看大图" height="28px" />
+                </a>
+                {/eq}
+                </td>
+                <td class="showBg">手持身份证照：</td>
+                <td>
+                {eq name="$identity.takecardphoto" value=""}
+                未上传
+                {else/}
+                <a href="{$identity.takecardphoto}" target="_blank">
+                    <img src="{$identity.takecardphoto}" alt="点击查看大图" height="28px" />
+                </a>
+                {/eq}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>银行卡信息</legend>
+        </fieldset>
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="showBg">开户银行：</td>
+                <td>
+                    <select id="bankname" name="bankname" lay-filter="bankname">
+                        {volist name="config.bankType" id="vo"}
+                        <option value="{$vo}" {if $vo eq $row['userInfo']['bank']['bankname']}selected="selected"{/if}>{$vo}</option>
+                        {/volist}
+                    </select>
+                </td>
+                <td class="showBg">提现密码：</td>
+                <td>{$row['userInfo']['bank']['txpass']|default="后台预设"}</td>
+                <td class="showBg">银行卡号：</td>
+                <td><input type="text" name="bankcard" class="layui-input" lay-verify="required" value="{$row['userInfo']['bank']['bankcard']|default='未填写'}" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>其它信息</legend>
+        </fieldset>
+        <table class="layui-table">
+            <?php $addess_ontacts = $row['userInfo']['contacts']; ?>
+            <tbody>
+            <tr>
+                <td class="showBg">借款用途：</td>
+                <td>
+                    <select id="dwname" name="dwname" lay-filter="dwname">
+                        {volist name="config.loadPurpose" id="vo"}
+                        <option value="{$vo}" {if $vo eq $addess_ontacts.dwname}selected="selected"{/if}>{$vo}</option>
+                        {/volist}
+                    </select>
+                 </td>
+                <td class="showBg">职务：</td>
+                <td><input type="text" name="position" class="layui-input" lay-verify="required" value="{$addess_ontacts.position|default='未填写'}" /></td>
+                <td class="showBg">工作年龄：</td>
+                <td><input type="text" name="workyears" class="layui-input" lay-verify="required" value="{$addess_ontacts.workyears|default='未填写'}" /></td>
+            </tr>
+            <tr>
+                <td class="showBg">月收入：</td>
+                <td>
+                    <select id="dwysr" name="dwysr" lay-filter="dwysr">
+                        {volist name="config.monthlyIncome" id="vo"}
+                        <option value="{$vo}" {if $vo eq $addess_ontacts.dwysr}selected="selected"{/if}>{$vo}</option>
+                        {/volist}
+                    </select>
+                </td>
+                <td class="showBg">单位名称：</td>
+                <td><input type="text" name="company" class="layui-input" lay-verify="required" value="{$addess_ontacts.company|default='未填写'}" /></td>
+                <td class="showBg">单位电话：</td>
+                <td><input type="text" name="dwphone" class="layui-input" lay-verify="required" value="{$addess_ontacts.dwphone|default='未填写'}" /></td>
+                <td class="showBg">单位地址：</td>
+                <td><input type="text" name="dwaddess_ssq" class="layui-input" lay-verify="required" value="{$addess_ontacts.dwaddess_ssq|default='未填写'}" /><input type="text" name="dwaddess_more" class="layui-input" lay-verify="required" value="{$addess_ontacts.dwaddess_more|default='未填写'}" /></td>
+            </tr>
+            <tr>
+                <td class="showBg">居住地址：</td>
+                <td><input type="text" name="addess_ssq" class="layui-input" lay-verify="required" value="{$addess_ontacts.addess_ssq|default='未填写'}" /><input type="text" name="addess_more" class="layui-input" lay-verify="required" value="{$addess_ontacts.addess_more|default='未填写'}" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>联系人信息</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>与借款人关系</th>
+                <th>联系电话</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="personname_1" class="layui-input" lay-verify="required" value="{$addess_ontacts.personname_1|default='未填写'}" /></td>
+                <td>
+                    <select id="persongx_1" name="persongx_1" lay-filter="persongx_1">
+                        {volist name="config.relationShip" id="vo"}
+                        <option value="{$vo}" {if $vo eq $addess_ontacts.persongx_1}selected="selected"{/if}>{$vo}</option>
+                        {/volist}
+                    </select>
+                </td>
+                <td><input type="text" name="personphone_1" class="layui-input" lay-verify="required" value="{$addess_ontacts.personphone_1|default='未填写'}" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+        </div>
+    </form>
+</div>

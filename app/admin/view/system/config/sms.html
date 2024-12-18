@@ -1,0 +1,83 @@
+<form id="app-form" class="layui-form layuimini-form">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">注册短信开关</label>
+        <div class="layui-input-block">
+            <input type="radio" name="msg_open" value="1" title="开启" {if condition="sysconfig('sms','msg_open') eq 1"}checked=""{/if}>
+            <input type="radio" name="msg_open" value="0" title="关闭" {if condition="sysconfig('sms','msg_open') eq 0"}checked=""{/if}>
+            <tip>关闭后注册无需验证码</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">注册短信用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="msg_user" class="layui-input" lay-verify="required" placeholder="请输入注册短信用户名" value="{:sysconfig('sms','msg_user')}">
+            <tip>用户名</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">注册短信密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="msg_pw" class="layui-input" lay-verify="required" placeholder="请输入注册短信密码" value="{:sysconfig('sms','msg_pw')}">
+            <tip>密码</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">注册短信模板</label>
+        <div class="layui-input-block">
+            <textarea rows="2" class="layui-textarea" name="msg_module">{:sysconfig('sms','msg_module')}</textarea>
+            <tip>###为验证码部分，必须填写!</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核短信开关</label>
+        <div class="layui-input-block">
+            <input type="radio" name="examine_sms_status" value="1" title="开启" {if condition="sysconfig('sms','examine_sms_status') eq 1"}checked=""{/if}>
+            <input type="radio" name="examine_sms_status" value="0" title="关闭" {if condition="sysconfig('sms','examine_sms_status') eq 0"}checked=""{/if}>
+            <tip>关闭后审批通过不发送通知短信</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核短信用户ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="examine_msg_user_id" class="layui-input" lay-verify="required" placeholder="请输入审核短信用户ID" value="{:sysconfig('sms','examine_msg_user_id')}">
+            <tip>用户ID，如无则不填写</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核短信用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="examine_msg_user" class="layui-input" lay-verify="required" placeholder="请输入注册短信用户名" value="{:sysconfig('sms','examine_msg_user')}">
+            <tip>用户名</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核短信密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="examine_msg_pw" class="layui-input" lay-verify="required" placeholder="请输入注册短信密码" value="{:sysconfig('sms','examine_msg_pw')}">
+            <tip>密码</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核短信模板</label>
+        <div class="layui-input-block">
+            <textarea rows="2" class="layui-textarea" name="examine_msg_module">{:sysconfig('sms','examine_msg_module')}</textarea>
+            <tip>请勿乱修改短信模板！</tip>
+        </div>
+    </div>
+
+    <div class="hr-line"></div>
+    <div class="layui-form-item text-center">
+        <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="system.config/save" data-refresh="false">确认</button>
+        <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+    </div>
+
+</form>
